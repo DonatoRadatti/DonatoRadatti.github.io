@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.noibeach.noibeach",
+    "sha256_cert_fingerprints":
+    ["29:0A:86:62:87:0E:5C:18:64:2B:40:B2:7A:33:ED:2F:8A:23:F1:57:CE:0A:01:15:78:25:3B:C7:2D:7D:3E:38"]
+  }
+}]
