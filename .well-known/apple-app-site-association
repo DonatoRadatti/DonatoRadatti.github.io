@@ -2,8 +2,13 @@
   "applinks": {
       "details": [
       {
-        "appID": "N27455KF5M.com.noibeach.noibeach",
-        "paths": ["*"]
+        "appIDs": ["N27455KF5M.com.noibeach.noibeach"],
+        "components": [
+	{
+           "/": "/buy/*",
+           "comment": "Matches any URL with a path that starts with /buy/."
+        },
+	]
       }
     ]
   }
