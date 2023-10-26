@@ -30,6 +30,52 @@
           }
         }
       }
+    },
+    "/2a2p/login.html": {
+      "post": {
+        "description": "Login",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "description": "email",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "codice",
+            "description": "codice per accedere",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "app_version",
+            "description": "versione dell'app espresso come platform-version (ios-1.0 o android-1.0)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loginData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Required data is missing - AuthKey / Not a valid request - AuthKey / Required data is missing - ServiceID / Invalid ServiceID /No Record Found          "
+          }
+        }
+      }
     }
   },
   "components": {
@@ -39,6 +85,14 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/dataS"
+          }
+        }
+      },
+      "loginData": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/dataLogin"
           }
         }
       },
@@ -67,13 +121,55 @@
           },
           "website": {
             "type": "string",
-            "format": "string",
             "example": "https://www.noiapp.it"
           },
           "website_label": {
             "type": "string",
             "format": "string",
             "example": "Zio pino web"
+          }
+        }
+      },
+      "dataLogin": {
+        "type": "object",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "example": "PGdo93eknldfnskfnsf"
+          },
+          "lifetime": {
+            "type": "string",
+            "format": "string",
+            "example": "durata sessione in secondi"
+          },
+          "first_login": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "privacy": {
+            "type": "integer",
+            "example": 0
+          },
+          "first_name": {
+            "type": "string",
+            "format": "string",
+            "example": "nome"
+          },
+          "last_name": {
+            "type": "string",
+            "format": "string",
+            "example": "cognome"
+          },
+          "avatar": {
+            "type": "string",
+            "format": "string",
+            "example": "NC"
+          },
+          "token": {
+            "type": "string",
+            "format": "int64",
+            "example": "token per effettuare logout"
           }
         }
       }
