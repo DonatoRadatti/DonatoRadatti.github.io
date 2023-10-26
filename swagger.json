@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Servicecheck Falcon API",
+    "description": "Servicecheck Falcon API used to create Falcon 2.0 application",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://noifarm.davide.eu.org"
+    }
+  ],
+  "paths": {
+    "/2a2p/v3a3r.html": {
+      "get": {
+        "description": "Lista variabili. Da richiamare all’avvio dell’app per richiedere la configurazione remota del server. La richiesta restituisce valori diversi a seconda se sia o meno autenticata dal token di sessione.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/varGlobal"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Required data is missing - AuthKey / Not a valid request - AuthKey / Required data is missing - ServiceID / Invalid ServiceID /No Record Found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "varGlobal": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/dataS"
+          }
+        }
+      },
+      "dataS": {
+        "type": "object",
+        "properties": {
+          "product_page": {
+            "type": "integer",
+            "format": "int64",
+            "example": 10
+          },
+          "register_page": {
+            "type": "string",
+            "format": "string",
+            "example": "/iscrizione"
+          },
+          "trolleys_max": {
+            "type": "integer",
+            "format": "int64",
+            "example": 4
+          },
+          "tk": {
+            "type": "string",
+            "format": "string",
+            "example": "7b9c49511bbab8689e8e4ac35e2a3172179e33866cd5c7eb"
+          },
+          "website": {
+            "type": "string",
+            "format": "string",
+            "example": "https://www.noiapp.it"
+          },
+          "website_label": {
+            "type": "string",
+            "format": "string",
+            "example": "Zio pino web"
+          }
+        }
+      }
+    }
+  }
+}
